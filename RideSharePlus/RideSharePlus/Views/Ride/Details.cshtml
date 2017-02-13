@@ -1,0 +1,102 @@
+﻿@model RideSharePlus.Models.Ride
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ride</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Campus.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartingCrossroads)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartingCrossroads)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartingTown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartingTown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOfWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOfWeek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Requirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Requirements)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RideId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div id="sametown">
+    @Ajax.ActionLink("Click me to see other students in your town",
+        "SameTown",
+        null,
+        Ride.StartingTown,
+        new AjaxOptions
+        {
+            UpdateTargetId = "sametown",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET"
+        },
+        new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>OC RideShare</h1>
+    <p class="lead">Get your ride to campus and home again organized here!</p>
+    <p><a href="http://olympic.edu/" class="btn btn-primary btn-lg">olympic.edu &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Find a Ride</h2>
+        <p>
+            See the available rides and create your rides here.
+        </p>
+        <p>@Html.ActionLink("Ride List »", "Index", "Ride", new { area = "" }, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>About this site</h2>
+        <p>Find out more about this site.</p>
+        <p>@Html.ActionLink("About »", "About", "Home", new { area = "" }, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Contact us</h2>
+        <p>Want to give us some feedback on the site?</p>
+        <p>@Html.ActionLink("Contact us »", "Contact", "Home", new { area = "" }, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
