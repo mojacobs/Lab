@@ -1,11 +1,14 @@
-﻿@model RideSharePlus.Models.Ride
+﻿@model List<RideSharePlus.Models.Ride>
 
-@*<div id="sametown">
+<div id="sametown">
+        @if (Model.Count == 0)
+        {
+            <p>No Results!</p>
+        }
         <ul>
             @foreach (var item in Model)
             {
-                <li>@item.Name</li>
+                <li>@item.StudentEmail</li>
             }
         </ul>
     </div>
-*@
