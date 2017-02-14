@@ -64,6 +64,18 @@ namespace RideSharePlus.Controllers
             return View(ride);
         }
 
+        public ActionResult SameTownSearch(string startingTown)
+        {
+            var students = GetStudents(startingTown);
+
+            return PartialView(students);
+        }
+
+        private List<Ride> GetStudents(string searchString)
+        {
+            return db.Rides.Where(s => s.StudentEmail.Contains(searchString)).ToList();
+        }
+
         // GET: Ride/Create
         public ActionResult Create()
         {

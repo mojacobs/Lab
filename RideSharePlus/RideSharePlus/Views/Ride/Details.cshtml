@@ -80,23 +80,27 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<div id="sametown">
-    @Ajax.ActionLink("Click me to see other students in your town",
-        "SameTown",
-        null,
-        Ride.StartingTown,
-        new AjaxOptions
-        {
-            UpdateTargetId = "sametown",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "GET"
-        },
-        new { @class = "btn btn-primary" })
-</div>
 
+<div id="sametown">
+        @Ajax.ActionLink("Click me to see other students in your town",
+            "SameTownSearch",
+            null,
+            new { StartingTown = Model.StartingTown },
+            new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET",
+                UpdateTargetId = "sametown"
+            },
+            new { @class = "btn btn-primary" })
+
+            <div id="sametown"></div>
+</div>
+    
 @section Scripts
 {
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/App/RideShareScripts.js"></script>
 }
 
 

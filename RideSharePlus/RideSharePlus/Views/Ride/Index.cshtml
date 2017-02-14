@@ -15,6 +15,8 @@
                 @Html.Label("Campus", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("CampusId", null, new { @class = "form-control" })
+                    @*<input type="text" name="c"
+    data-autocomplete-source="@Url.Action("CampusSearch", "Ride")" />*@
                 </div>
             </div>
 
@@ -22,81 +24,84 @@
                 @Html.Label("Day of Week", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("DayOfWeek", null, new { @class = "form-control" })
+                    @*<input type="text" name="d"
+    data-autocomplete-source="@Url.Action("DaySearch", "Ride")" />*@
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Search" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Search" class="btn btn-default" />
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-</p>
+            }
+        </div>
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Campus.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartingCrossroads)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartingTown)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DayOfWeek)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeEnd)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Campus.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartingCrossroads)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartingTown)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DayOfWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeEnd)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Campus.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartingCrossroads)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartingTown)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayOfWeek)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeEnd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RideId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RideId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RideId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Campus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingCrossroads)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingTown)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayOfWeek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeEnd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.RideId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.RideId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RideId })
+            </td>
+        </tr>
+    }
 
-</table>
+    </table>
 
-@section Scripts
-{
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-}
+    @section Scripts
+    {
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/Scripts/App/RideShareScripts.js"></script>
+    }
