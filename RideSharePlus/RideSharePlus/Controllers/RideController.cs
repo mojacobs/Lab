@@ -63,7 +63,6 @@ namespace RideSharePlus.Controllers
                      .ToList();
         }
 
-      
         public ActionResult DaySearch(string term)
         {
             var days = GetDays(term);
@@ -71,17 +70,15 @@ namespace RideSharePlus.Controllers
             return Json(days, JsonRequestBehavior.AllowGet);
         }
 
-       
-        private List<DayOfWeek> GetDays(string searchString)
+        private List<string> GetDays(string searchString)
         {
             return db.Rides
                      .Where(r => r.DayOfWeek.Contains(searchString))
-                     .Select(r => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), r.DayOfWeek))
+                     .Select(r => r.DayOfWeek)
                      .Distinct()
                      .ToList();
         }
  
-
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
         {
