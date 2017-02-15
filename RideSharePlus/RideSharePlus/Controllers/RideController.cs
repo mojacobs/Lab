@@ -49,6 +49,36 @@ namespace RideSharePlus.Controllers
             return View("Index", rides.ToList());
         }
 
+        public ActionResult CampusSearch(string term)
+        {
+            var campus = GetCampus(term).Select(c => new { value = c.Name });
+
+            return Json(campus, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<Campus> GetCampus(string searchString)
+        {
+            return db.Campus
+                     .Where(c => c.Name.Contains(searchString))
+                     .ToList();
+        }
+
+        /*
+        public ActionResult DaySearch(string term)
+        {
+            var day = GetDay(term).Select(d => new { value = d. });
+
+            return Json(day, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<DayOfWeek> GetDay(string searchString)
+        {
+            return db.Rides
+                     .Where(d => d.DayOfWeek.Contains(searchString))
+                     .ToList();
+        }
+        */
+
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
         {

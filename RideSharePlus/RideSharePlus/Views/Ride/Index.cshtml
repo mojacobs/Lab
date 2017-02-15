@@ -14,9 +14,9 @@
             <div class="form-group">
                 @Html.Label("Campus", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("CampusId", null, new { @class = "form-control" })
-                    @*<input type="text" name="c"
-    data-autocomplete-source="@Url.Action("CampusSearch", "Ride")" />*@
+                    @*@Html.DropDownList("CampusId", null, new { @class = "form-control" })*@
+                    <input type="text" name="c" class="control-label col-md-2" 
+                           data-autocomplete-source="@Url.Action("CampusSearch", "Ride")" />
                 </div>
             </div>
 
@@ -24,8 +24,7 @@
                 @Html.Label("Day of Week", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("DayOfWeek", null, new { @class = "form-control" })
-                    @*<input type="text" name="d"
-    data-autocomplete-source="@Url.Action("DaySearch", "Ride")" />*@
+                    @*<input type="text" name="d" data-autocomplete-source="@Url.Action("DaySearch", "Ride")" />*@
                     </div>
                 </div>
 
@@ -99,6 +98,8 @@
     }
 
     </table>
+    
+    @Scripts.Render("~/bundles/jqueryui")
 
     @section Scripts
     {
