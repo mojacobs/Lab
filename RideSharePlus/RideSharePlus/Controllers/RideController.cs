@@ -27,22 +27,22 @@ namespace RideSharePlus.Controllers
             return View(rides.ToList());
         }
 
-        // GET: Ride/Search?campusid=value&dayofweek=value
-        public ActionResult Search(int? campusId, string dayOfWeek)
+        // GET: Ride/Search?campusName=value&dayofweek=value
+        public ActionResult Search(string campusName, string dayOfWeek)
         {
             var rides = db.Rides.Include(r => r.Campus);
 
-            if (campusId != null)
+            if (campusName != null)
             {
-                rides = rides.Where(r => r.CampusId == campusId);
+                rides = rides.Where(r => r.Campus.Name == campusName);
             }
             if (dayOfWeek != null && dayOfWeek.Length > 0)
             {
                 rides = rides.Where(r => r.DayOfWeek.Contains(dayOfWeek));
             }
 
-            ViewBag.CampusId = new SelectList(db.Campus, 
-                "CampusId", "Name", campusId);
+            ViewBag.Name = new SelectList(db.Campus, 
+                "Campus", "Name", campusName);
 
             ViewBag.DayOfWeek = SetupDayOfWeek();
 
@@ -69,7 +69,7 @@ namespace RideSharePlus.Controllers
 
             return Json(days, JsonRequestBehavior.AllowGet);
         }
-
+  
         private List<string> GetDays(string searchString)
         {
             return db.Rides
@@ -114,8 +114,6 @@ namespace RideSharePlus.Controllers
         }
 
         // POST: Ride/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd,Requirements")] Ride ride)
@@ -148,8 +146,6 @@ namespace RideSharePlus.Controllers
         }
 
         // POST: Ride/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd,Requirements")] Ride ride)
@@ -203,24 +199,6 @@ namespace RideSharePlus.Controllers
 
             return weekdays;
         }
-
-        //public ActionResult SameStartingTown()
-        //{
-        //    var album = GetDailyDeal();
-        //
-        //    return PartialView("_DailyDeal", album);
-        //}
-        //
-        //// Select an album and discount it by 50%
-        //private Album GetSameStartingTown()
-        //{
-        //    var album = storeDB.Albums
-        //        .OrderBy(a => System.Guid.NewGuid())
-        //        .First();
-        //
-        //    album.Price *= 0.5m;
-        //    return album;
-        //}
 
         protected override void Dispose(bool disposing)
         {
