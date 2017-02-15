@@ -63,21 +63,24 @@ namespace RideSharePlus.Controllers
                      .ToList();
         }
 
-        /*
+      
         public ActionResult DaySearch(string term)
         {
-            var day = GetDay(term).Select(d => new { value = d. });
+            var days = GetDays(term);
 
-            return Json(day, JsonRequestBehavior.AllowGet);
+            return Json(days, JsonRequestBehavior.AllowGet);
         }
 
-        private List<DayOfWeek> GetDay(string searchString)
+       
+        private List<DayOfWeek> GetDays(string searchString)
         {
             return db.Rides
-                     .Where(d => d.DayOfWeek.Contains(searchString))
+                     .Where(r => r.DayOfWeek.Contains(searchString))
+                     .Select(r => (DayOfWeek)Enum.Parse(typeof(DayOfWeek), r.DayOfWeek))
+                     .Distinct()
                      .ToList();
         }
-        */
+ 
 
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
